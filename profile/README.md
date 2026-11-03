@@ -92,6 +92,9 @@ Start here: [contract backlog](https://github.com/yieldstream-org/yieldstream-co
 [SDK backlog](https://github.com/yieldstream-org/yieldstream-sdk/issues) ·
 [app backlog](https://github.com/yieldstream-org/yieldstream-app/issues)
 
+Participation across all three repos is governed by the
+[code of conduct](https://github.com/yieldstream-org/yieldstream-contract/blob/main/CODE_OF_CONDUCT.md).
+
 ## Maintainers
 
 | | |
