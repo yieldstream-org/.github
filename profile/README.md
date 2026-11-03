@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](#license)
 [![Network](https://img.shields.io/badge/network-Stellar%20testnet-7B2BF9)](https://stellar.expert/explorer/testnet/contract/CC25WDHZ7SQC2UMZJHIPYM2U5ROYFXVDZMP3THMIL3IJY6HOCGGX2FPG)
 
-[LIVE SITE](https://yieldstream-protocol.vercel.app) · [TESTNET CONTRACT](https://stellar.expert/explorer/testnet/contract/CC25WDHZ7SQC2UMZJHIPYM2U5ROYFXVDZMP3THMIL3IJY6HOCGGX2FPG) · [CONTRIBUTE](https://github.com/yieldstream-org/yieldstream-contract/issues)
+[LIVE SITE](https://yieldstream-protocol.vercel.app) · [DOCS](https://yieldstream-protocol.vercel.app/docs) · [TESTNET CONTRACT](https://stellar.expert/explorer/testnet/contract/CC25WDHZ7SQC2UMZJHIPYM2U5ROYFXVDZMP3THMIL3IJY6HOCGGX2FPG) · [CONTRIBUTE](https://github.com/yieldstream-org/yieldstream-contract/issues)
 
 </div>
 
@@ -32,7 +32,12 @@ path — about 14 hashes for a 10,000-person list — and pays for their own cla
 Whatever is unclaimed when the campaign expires sweeps back to the issuer in one
 call.
 
-The issuer pays for one commitment. The ledger stores a root, not a roster.
+The issuer pays for one commitment. The ledger stores a root, not a roster —
+the recipient list never goes on-chain. Each *claim* does write its own ledger
+entry today; [contract issue
+#13](https://github.com/yieldstream-org/yieldstream-contract/issues/13) tracks
+packing those markers into a bitmap so a 10,000-claim campaign costs ~40 entries
+instead of 10,000.
 
 ## The three repos
 
@@ -40,7 +45,7 @@ The issuer pays for one commitment. The ledger stores a root, not a roster.
 |---|---|---|
 | [`yieldstream-contract`](https://github.com/yieldstream-org/yieldstream-contract) | Rust / Soroban | The distributor contract: campaign creation, escrow, proof verification, claims, cancel, sweep. RFC 6962 domain separation, sorted-pair proofs, 21 tests, pinned JSON test vectors. |
 | [`yieldstream-sdk`](https://github.com/yieldstream-org/yieldstream-sdk) | TypeScript | Client for building trees off-chain, generating proofs, and talking to the contract. Conformance-pinned to the contract's vectors. |
-| [`yieldstream-app`](https://github.com/yieldstream-org/yieldstream-app) | Next.js / Tailwind | Protocol site, issuer dashboard, and the wallet-connected claim UI. |
+| [`yieldstream-app`](https://github.com/yieldstream-org/yieldstream-app) | Next.js / Tailwind | Protocol site, the [documentation site](https://yieldstream-protocol.vercel.app/docs), issuer dashboard, and the wallet-connected claim UI. |
 
 They connect in this direction:
 
